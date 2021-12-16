@@ -19,9 +19,9 @@
     }
 
     .hero-image {
-      background-image: url("/Images/cover.jpg");
+      background-image: url("home.jpg");
       background-color: #cccccc;
-      height: 600px;
+      height: 1000px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -35,6 +35,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: Black;
+      width: 50%;
     }
   </style>
 </head>
@@ -56,12 +57,10 @@
           @endauth
         </div>
         @endif
-
         <div class="callout callout-info">
-          <h1 style="font-size:50px"><b>Build A Professional CV in Minutes.</b></h1>
-          <h3>Online Resume / CV Builder and Software</h3>
+          <h1 style="font-size:50px"><b>Let's Be</b></h1>
+          <h3>Strong Together</h3>
         </div>
-        <a href="{{ route('createcv') }}" class="btn btn-block btn-success btn-lg">Create Your CV Now</a>
       </div>
     </div>
   </div>
