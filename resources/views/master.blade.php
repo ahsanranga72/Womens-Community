@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Womens Community</title>
+  <title>DDWSS</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -74,7 +74,7 @@
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
         <img src="{{asset('logo.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Womens Community</span>
+        <span class="brand-text font-weight-light">DDWSS</span>
       </a>
 
       <!-- Sidebar -->
@@ -82,7 +82,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="{{asset('dist/img/1.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{asset('dist/img/avatar3.png')}}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a id="navbar" class="nav-link" href="#">
@@ -100,51 +100,183 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Management
+                  News
                   <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right">2</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('admin.createblog')}}" class="nav-link">
                     <i class="far fa-file-text nav-icon"></i>
-                    <p>Add Category</p>
+                    <p>Create News</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.myblog')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>View News</p>
                   </a>
                 </li>
               </ul>
             </li>
-            @endif
-            @if(Auth::user()->RegistrationAs==1 || Auth::user()->RegistrationAs=='')
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                   Blog
                   <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right">4</span>
+
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('createblog') }}" class="nav-link">
+                  <a href="{{ route('post.create')}}" class="nav-link">
                     <i class="far fa-file-text nav-icon"></i>
                     <p>Create Blog</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('viewblog') }}" class="nav-link">
+                  <a href="{{ route('mypost')}}" class="nav-link">
                     <i class="far fa-file-text nav-icon"></i>
                     <p>View Blogs</p>
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Videos
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('admin.uploadvideo')}}" class="nav-link">
                     <i class="far fa-file-text nav-icon"></i>
-                    <p>Edit Blog</p>
+                    <p>Upload Videos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.myvideo')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>My Videos</p>
                   </a>
                 </li>
               </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Administrative Help
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('admin.addadministrative')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>Add</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>Edit</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                Psychiatrist
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('addpsychiatrist')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>Add</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('viewpsychiatrist')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>View</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('womenchat')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>Message</p>
+              </a>
+            </li>
+
+            @endif
+            @if(Auth::user()->RegistrationAs== 2 )
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Blog
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('post.create')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>Create Blog</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('mypost')}}" class="nav-link">
+                    <i class="far fa-file-text nav-icon"></i>
+                    <p>My Blog</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('viewblog')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>News</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('user.watchvideos')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>Watch Videos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('user.administrative')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>Addministrative Help</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('viewpsychiatrist')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>Psychiatrists</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ route('womenchat')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>Message</p>
+              </a>
             </li>
             @endif
           </ul>

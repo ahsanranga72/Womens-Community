@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -23,7 +24,54 @@ class BlogController extends Controller
      */
     public function createblog()
     {
-        return view('createblog');
+        return view('admin.createblog');
+    }
+
+    public function addblog(Request $req)
+    {
+        $req->validate([
+            'image' => 'mimes:jpg,png,jpeg'
+        ]);
+
+        $blog = new Blog();
+        $blog->title = $req->title;
+        $blog->desc = $req->desc;
+        $newImage = time(). '.' .$req->image->extension();
+        $req->image->move(public_path('Images'), $newImage);
+        $blog->image = $newImage;
+        $blog->save();
+        return redirect()->route('viewblog');
+    }
+
+
+    public function myblog()
+    {
+        $blogs = Blog::all();
+        return view('admin.myblogs', ['blogs'=>$blogs]);
+    }
+
+    public function index()
+    {
+        $blogs = Blog::all();
+
+        return view('viewblog',['blogs'=>$blogs]);
+    }
+    public function blogedit($id)
+    {
+        $blog = Blog::find($id);
+        return view('admin.editblog',['blog'=>$blog]);
+    }
+
+    public function blogupdate(Request $req)
+    {
+        $blog = Blog::find($req->id);
+        $blog->title = $req->title;
+        $blog->desc = $req->desc;
+        $newImage = time(). '.' .$req->image->extension();
+        $req->image->move(public_path('Images'), $newImage);
+        $blog->image = $newImage;
+        $blog->save();
+        return redirect()->route('admin.myblog');
     }
 
     /**
